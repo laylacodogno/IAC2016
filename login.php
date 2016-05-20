@@ -9,7 +9,7 @@
      $query_login = mysqli_query($connect, "SELECT * FROM pessoas WHERE login = '".$_POST['login']."' and senha = '".$senha_hash."'");
      $rows = mysqli_fetch_all($query_login);
      if (count($rows) > 0) {
-      
+
        $_SESSION['id'] = $rows[0]['id'];
        $_SESSION['nome'] = $rows[0]['nome'];
 
@@ -37,6 +37,9 @@
        endif; ?>
 
         <div class="panel panel-default">
+          <p>
+            oi layla
+          </p>
           <div class="panel-body">
             <form action="" method="POST">
               <div class="form-group">
