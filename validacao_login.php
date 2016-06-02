@@ -13,9 +13,9 @@
         $sql = "SELECT usuario, senha FROM pessoas
                 WHERE login = '$usuario' AND senha = '$senha_hash'";
         $resultado = mysqli_query($conexao, $sql);
-        $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+        $row = mysqli_fetch_all($resultado);
 
-        if(mysqli_num_rows($resultado) == 1) {
+        if(count($resultado) == 1) {
 
             // inicia a sessão
             session_start();
