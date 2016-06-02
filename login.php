@@ -1,61 +1,33 @@
-<?php
- include("functions.php");
- connect();
-
- if(isset($_POST['login'])){
-   if (!empty($_POST['login']) && !empty($_POST['password']) ) {
-     $senha_hash = md5($_POST['password']);
-
-     $query_login = mysqli_query($connect, "SELECT * FROM pessoas WHERE login = '".$_POST['login']."' and senha = '".$senha_hash."'");
-     $rows = mysqli_fetch_all($query_login);
-     if (count($rows) > 0) {
-
-       $_SESSION['id'] = $rows[0]['id'];
-       $_SESSION['nome'] = $rows[0]['nome'];
-
-       header('Location: cadastro.php');
-       exit;
-     }else{
-       $erro = 'Login ou Senha inválidos';
-     }
-
-   }else{
-     $erro = 'Login ou Senha não podem ser vazio.';
-   }
- }
-
-
-?>
 <?php include 'header.php'; ?>
-    <main>
-      <div class="container">
-        <div class="page-header">
-          <h1>Login</h1>
-        </div>
-        <?php if (!empty($erro)):
-          echo $erro;
-       endif; ?>
+<?php include 'nav.php'; ?>
+<main>
+  <?php
 
-        <div class="panel panel-default">
-          <p>
-            oi layla
-          </p>
-          <div class="panel-body">
-            <form action="" method="POST">
-              <div class="form-group">
-                <label for="login">Login</label>
-                <input type="text" class="form-control" id="login" name="login" placeholder="Login">
-              </div>
-              <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
-              </div>
-              <button type="submit" class="btn btn-default">Entrar</button>
-            </form>
+            if (!empty($_GET['error'])) {
+
+                $error = $_GET['error'];
+                if ($error == 1) {
+                    echo "<h3 class=\"text-warning\">Login ou senha inválidos</h3>";
+                } elseif ($error == 2) {
+                    echo "<h3 class=\"text-warning\">Preencha o formulário</h3>";
+                }
+            }
+
+        ?>
+        <h2 class="text-info">Entrar no Sistema</h2>
+
+        <form name="login" action="validacao_login.php" method="post">
+          <div class="input-group">
+            <span class="input-group-addon" id="usuario">Usuário:</span>
+            <input type="text" class="form-control" aria-describedby="usuario" name="usuario"  required="true">
           </div>
-        </div>
-      </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="senha">Senha:</span>
+            <input type="password" class="form-control" aria-describedby="senha" name="senha"  required="true">
+          </div>
 
-    </main>
+          <button class="btn btn-success" type="submit" name="entrar">Entrar</button>
+        </form>
 
+</main>
 <?php include 'footer.php'; ?>
