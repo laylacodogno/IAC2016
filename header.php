@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+      <link rel="stylesheet" type="text/css" href="assets/sweetalert-master/dist/sweetalert.css">
+      <script src="assets/jquery-1.12.4.min.js"></script>
+      <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/sweetalert-master/dist/sweetalert.min.js"></script>
       <meta charset="utf-8">
       <title>IAC2016</title>
     </head>

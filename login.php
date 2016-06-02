@@ -1,33 +1,48 @@
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <main>
-  <?php
+  <div class="container">
+    <?php
 
-            if (!empty($_GET['error'])) {
+              if (!empty($_GET['error'])) {
 
-                $error = $_GET['error'];
-                if ($error == 1) {
-                    echo "<h3 class=\"text-warning\">Login ou senha inválidos</h3>";
-                } elseif ($error == 2) {
-                    echo "<h3 class=\"text-warning\">Preencha o formulário</h3>";
-                }
+                  $error = $_GET['error'];
+                  if ($error == 1) {
+                      echo "<p class=\"text-warning\">Login ou senha inválidos</p>";
+
+                  }
+              }
+
+          ?>
+          <h2 class="text-info">Entrar no Sistema</h2>
+
+          <form name="login" action="validacao_login.php" method="post" onSubmit="return validar_login()">
+            <div class="form-group">
+              <label for="senha">Usuário:</label>
+              <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário">
+            </div>
+            <div class="form-group">
+              <label for="senha">Senha:</label>
+              <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+            </div>
+
+            <button class="btn btn-primary" type="submit" name="entrar">Entrar</button>
+          </form>
+          <script language="javascript" type="text/javascript">
+            function validar_login() {
+              var usuario = login.usuario.value;
+              var senha = login.senha.value;
+
+              if (usuario == '' || senha == '') {
+                sweetAlert("Oops...", "Preencha todos os campos.", "error");
+                return false;
+              }else{
+                return true;
+              }
             }
+          </script>
+  </div>
 
-        ?>
-        <h2 class="text-info">Entrar no Sistema</h2>
-
-        <form name="login" action="validacao_login.php" method="post">
-          <div class="input-group">
-            <span class="input-group-addon" id="usuario">Usuário:</span>
-            <input type="text" class="form-control" aria-describedby="usuario" name="usuario"  required="true">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon" id="senha">Senha:</span>
-            <input type="password" class="form-control" aria-describedby="senha" name="senha"  required="true">
-          </div>
-
-          <button class="btn btn-success" type="submit" name="entrar">Entrar</button>
-        </form>
 
 </main>
 <?php include 'footer.php'; ?>

@@ -10,12 +10,13 @@
 
         include 'conexao.php';
 
-        $sql = "SELECT usuario, senha FROM pessoas
+        $sql = "SELECT login, senha FROM pessoas
                 WHERE login = '$usuario' AND senha = '$senha_hash'";
         $resultado = mysqli_query($conexao, $sql);
         $row = mysqli_fetch_all($resultado);
 
-        if(count($resultado) == 1) {
+        if(count($row) > 0) {
+
 
             // inicia a sessão
             session_start();
