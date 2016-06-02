@@ -18,7 +18,7 @@
 
           <form name="login" action="validacao_login.php" method="post" onSubmit="return validar_login()">
             <div class="form-group">
-              <label for="senha">Usuário:</label>
+              <label for="usuario">Usuário:</label>
               <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário">
             </div>
             <div class="form-group">

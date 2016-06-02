@@ -15,7 +15,7 @@
         $resultado = mysqli_query($conexao, $sql);
         $row = mysqli_fetch_all($resultado);
 
-        if(count($row) > 0) {
+        if(count($row) == 1) {
 
 
             // inicia a sessão
