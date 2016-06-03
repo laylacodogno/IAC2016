@@ -14,4 +14,5 @@ $( document ).ready(function() {
       }
     }).trigger('focusout');
     $('.cpf-field').mask("999.999.999-99");
+
 });
