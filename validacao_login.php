@@ -10,12 +10,13 @@
 
         include 'conexao.php';
 
-        $sql = "SELECT login, senha FROM pessoas
+        $sql = "SELECT * FROM pessoas
                 WHERE login = '$usuario' AND senha = '$senha_hash'";
         $resultado = mysqli_query($conexao, $sql);
-        $row = mysqli_fetch_all($resultado);
-
-        if(count($row) == 1) {
+        $rows = mysqli_fetch_all($resultado);
+        // print_r($rows);
+        // die;
+        if(count($rows) == 1) {
 
 
             // inicia a sessão
@@ -23,8 +24,16 @@
             // criar variáveis de sessão;
             $_SESSION['usuario'] = $usuario;
             $_SESSION['senha'] = $senha;
+            $_SESSION['nome'] = $rows[0][1];
+            $_SESSION['admin'] = $rows[0][3];
+            // print_r(  $_SESSION['admin']);
+            // die;
             // redirecionar
-            header('location:cadastro_usuario.php');
+            if ($_SESSION['admin'] == "1") {
+              header('location:home_admin.php');
+            }else{
+                header('location:home_usuario.php');
+            }
 
 
         } else {

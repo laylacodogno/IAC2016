@@ -3,6 +3,13 @@
 <main>
   <div class="container">
     <?php
+    if (isset($_SESSION['usuario'])) {
+      if ($_SESSION['admin'] = 1) {
+        header('location:home_admin.php');
+      }else{
+          header('location:home_usuario.php');
+      }
+    } 
 
               if (!empty($_GET['error'])) {
 

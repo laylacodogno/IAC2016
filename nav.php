@@ -15,9 +15,13 @@
               echo '<li><a href="entrada.php">Entrada</a></li>';
               echo '<li><a href="login.php">Login</a></li>';
           } else {
+            if ($_SESSION['admin'] == "1" ){
               echo '<li><a href="cadastro_usuario.php">Cadastrar Usuário</a></li>';
               echo '<li><a href="cadastro_tag.php">Cadastrar TAG</a></li>';
               echo '<li><a href="logout.php">Logout</a></li>';
+            }else{
+              echo '<li><a href="logout.php">Logout</a></li>';
+            }
           }
 
       ?>

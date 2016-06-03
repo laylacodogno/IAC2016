@@ -8,6 +8,7 @@
 
      $query_login = mysqli_query($connect, "SELECT * FROM pessoas WHERE login = '".$_POST['login']."' and senha = '".$senha_hash."'");
      $rows = mysqli_fetch_all($query_login);
+    
      if (count($rows) > 0) {
 
        $_SESSION['id'] = $rows[0]['id'];
