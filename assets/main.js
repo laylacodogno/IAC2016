@@ -2,6 +2,8 @@ $( document ).ready(function() {
     console.log( "ready!" );
 
     $(".date-field").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    $('.cpf-field').mask("999.999.999-99");
+    $('.cep-field').mask("99.999-999");
     $('.phone-field').focusout(function(){
       var phone, element;
       element = $(this);
@@ -13,6 +15,17 @@ $( document ).ready(function() {
           element.mask("(99) 9999-9999?9");
       }
     }).trigger('focusout');
-    $('.cpf-field').mask("999.999.999-99");
+
+    
+
 
 });
+jQuery.browser = {};
+(function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();

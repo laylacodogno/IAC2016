@@ -3,7 +3,7 @@
     <head>
       <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
       <link rel="stylesheet" type="text/css" href="assets/sweetalert-master/dist/sweetalert.css">
-      <script src="assets/jquery-1.12.4.min.js"></script>
+      <script src="assets/jquery-1.12.4.js"></script>
       <script src="assets/jquery.maskedinput.js"></script>
       <script src="assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="assets/sweetalert-master/dist/sweetalert.min.js"></script>
