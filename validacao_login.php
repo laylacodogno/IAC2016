@@ -25,7 +25,7 @@
             $_SESSION['usuario'] = $usuario;
             $_SESSION['senha'] = $senha;
             $_SESSION['nome'] = $rows[0][1];
-            $_SESSION['admin'] = $rows[0][3];
+            $_SESSION['admin'] = $rows[0][2];
             // print_r(  $_SESSION['admin']);
             // die;
             // redirecionar
