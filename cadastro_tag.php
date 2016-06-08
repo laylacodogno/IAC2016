@@ -3,6 +3,21 @@
 
 <main>
 <div class="container">
+  <?php
+    if (isset($_POST['cadastroTag'])) {
+      if (!empty($_POST['tagMaster'] &&)
+          !empty($_POST['tagNovo'] && ) {
+        $master = $_POST['tagMaster'];
+        $novo = $_POST['tagNovo'];
+        if (!empty($_POST['master'])) {
+          $novoMaster = intval($_POST['master']);
+        }else{
+          $novoMaster = 0;
+        }
+
+      }
+    }
+  ?>
   <h2 class="text-info">Cadastrar TAG</h2>
   <form name="cadastroTag" onSubmit="return validar_tag()"  method="post">
     <div class="form-group">
