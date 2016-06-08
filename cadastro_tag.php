@@ -4,14 +4,14 @@
 <main>
 <div class="container">
   <h2 class="text-info">Cadastrar TAG</h2>
-  <form name="cadastroTag" method="post">
+  <form name="cadastroTag" onSubmit="return validar_tag()"  method="post">
     <div class="form-group">
       <label for="tagMaster">TAG Master:</label>
-      <input type="text" class="form-control" id="tagMaster" name="tagMaster" onSubmit="return validar_tag()" placeholder="TAG Master">
+      <input type="text" class="form-control" id="tagMaster" name="tagMaster" placeholder="TAG Master">
     </div>
     <div class="form-group">
       <label for="tagNovo">TAG para Cadastro:</label>
-      <input type="text" class="form-control" id="tagNovo" name="tagNovo" onSubmit="return validar_tag()" placeholder="Novo TAG">
+      <input type="text" class="form-control" id="tagNovo" name="tagNovo" placeholder="Novo TAG">
     </div>
     <div class="form-group">
       <label for="master"><input type="checkbox" id="master" name="master"> &nbsp Novo TAG Master</label>
