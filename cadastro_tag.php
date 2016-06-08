@@ -5,8 +5,8 @@
 <div class="container">
   <?php
     if (isset($_POST['cadastroTag'])) {
-      if (!empty($_POST['tagMaster'] &&)
-          !empty($_POST['tagNovo'] && ) {
+      if (!empty($_POST['tagMaster']) &&
+          !empty($_POST['tagNovo']))  {
         $master = $_POST['tagMaster'];
         $novo = $_POST['tagNovo'];
         if (!empty($_POST['master'])) {
