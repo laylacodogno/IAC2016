@@ -42,14 +42,19 @@
               //  var_dump($CPF, $nome, $login, $senha, $admin, $CEP,  $numero,  $complemento,  $referencia );
               //  die;
               include 'conexao.php';
-
-              $sqlE = "INSERT INTO enderecos (cep, numero, complemento, ponto_referencia)
-                      VALUES ('$CEP', '$numero', '$complemento', '$referencia');";
-              $resultadoE = mysqli_query($conexao, $sqlE);
-
-              $endereco_id = mysqli_insert_id($conexao);
-              // var_dump($endereco_id); die;
-              if ($resultadoE) {
+              $sqlB = "SELECT * FROM enderecos WHERE cep = '$CEP' and numero = '$numero' and complemento = '$complemento';";
+              $resultadoB = mysqli_query($conexao, $sqlB);
+              if (mysqli_num_rows($resultadoB) >= 1){
+                $row = mysqli_fetch_row($resultadoB);
+                $endereco_id = $row[0];
+              }
+              else{
+                $sqlE = "INSERT INTO enderecos (cep, numero, complemento, ponto_referencia)
+                        VALUES ('$CEP', '$numero', '$complemento', '$referencia');";
+                $resultadoE = mysqli_query($conexao, $sqlE);
+                $endereco_id = mysqli_insert_id($conexao);
+              }
+              if (isset($endereco_id)) {
                 $sqlP = "INSERT INTO pessoas (cpf, nome, login, senha, administrador, departamento_id, endereco_id)
                         VALUES ('$CPF', '$nome', '$login', '$senha', '$admin', '$departamento', '$endereco_id');";
                 $resultado = mysqli_query($conexao, $sqlP);
