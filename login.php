@@ -9,7 +9,7 @@
       }else{
           header('location:home_usuario.php');
       }
-    } 
+    }
 
               if (!empty($_GET['error'])) {
 
@@ -39,7 +39,6 @@
             function validar_login() {
               var usuario = login.usuario.value;
               var senha = login.senha.value;
-
               if (usuario == '' || senha == '') {
                 sweetAlert("Oops...", "Preencha todos os campos.", "error");
                 return false;
