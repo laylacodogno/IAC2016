@@ -1,43 +1,76 @@
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
+<?php
+  $usuario = $_SESSION['usuario'];
+  $sqlP = "SELECT * FROM pessoas
+  WHERE login = '$usuario';";
+  include 'conexao.php';
+  $resultadoP = mysqli_query($conexao, $sqlP);
+  $row = mysqli_fetch_row($resultadoP);
+  $id_usuario = $row[0];
+  $sqlTP = "SELECT id FROM tags
+  WHERE pessoa_id = '$id_usuario';";
+  $resultadoTP = mysqli_query($conexao, $sqlTP);
+  $qtdtag = mysqli_num_rows($resultadoTP);
+  if ($qtdtag > 0) {
+    $x=0;
+    while($row = mysqli_fetch_assoc($resultadoTP)) {
+      $tags[$x] = $row["id"];
+      $x++;
+    }
+  }
+?>
 <main>
   <div class="container">
-    <h1>Relatórios de entrada</h1>
-    <h2 class="text-info">TAG: <?php echo $_POST['tag'] ?></h2>
+    <form class="" action="seleciona_tag.php" method="post">
+      <h2>Selecione a TAG que deseja buscar</h2>
+      <div class="form-group">
+      <select name="tag" id="tag" class="form-control">
+        <option value="0"> Selecione a tag...</option>;
     <?php
-      if (isset($_SESSION['usuario'])) {
-        if (isset($_POST['tag'])){
-          include 'conexao.php';
-          $tag_id=$_POST['tag'];
-          $sqlBE = "SELECT data FROM entradas
-          WHERE tag_id = '$tag_id';" ;
-          $resultadoBE = mysqli_query($conexao, $sqlBE);
-          $qtdEntradas = mysqli_num_rows($resultadoBE);
-          if ($qtdEntradas > 0) {
-            $x=0;
-            while ($row = mysqli_fetch_assoc($resultadoBE)) {
-              $entradas[$x]=$row["data"];
-              $x++;
-          }
-        }
-      }
+    for ($i=0; $i < $qtdtag; $i++) {
+        echo "<option value=\"$tags[$i]\">$tags[$i]</option>";
     }
+
     ?>
-    <table class="table-striped table">
-      <tr>
-        <th>DATA &nbsp</th>
-        <th>HORÁRIO &nbsp</th>
-      </tr>
-      <?php for ($i=0; $i < $qtdEntradas; $i++) {
-        $datahora = explode(" ",$entradas[$i]);
-        $data=date('d/m/Y', strtotime($entradas[0]));
-        ?>
-      <tr>
-        <td> <?php echo $data; ?> &nbsp</td>
-        <td> <?php echo $datahora[1] ?> &nbsp</td>
-      </tr>
-      <?php } ?>
-    </table>
+      </select>
+    </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" name="procurarTag">Buscar</button>
+      </div>
+    </form>
+    <?php if (isset($_POST['tag'])){
+      if($_POST['tag'] != 0){
+      $tag_id=$_POST['tag'];
+      $sqlBE = "SELECT data FROM entradas
+      WHERE tag_id = '$tag_id';" ;
+      $resultadoBE = mysqli_query($conexao, $sqlBE);
+      $qtdEntradas = mysqli_num_rows($resultadoBE);
+      if ($qtdEntradas > 0) {
+        $x=0;
+        while ($row = mysqli_fetch_assoc($resultadoBE)) {
+          $entradas[$x]=$row["data"];
+          $x++;
+        }
+      }?>
+      <h2 class="text-info">TAG: <?php echo $_POST['tag'] ?></h2>
+          <table class="table-striped table">
+            <tr>
+              <th>DATA &nbsp</th>
+              <th>HORÁRIO &nbsp</th>
+            </tr>
+            <?php for ($i=0; $i < $qtdEntradas; $i++) {
+              $datahora = explode(" ",$entradas[$i]);
+              $data=date('d/m/Y', strtotime($entradas[0]));
+              ?>
+            <tr>
+              <td> <?php echo $data; ?> &nbsp</td>
+              <td> <?php echo $datahora[1] ?> &nbsp</td>
+            </tr>
+            <?php } ?>
+          </table>
+    <?php }
+  } ?>
   </div>
 </main>
 <?php include 'footer.php'; ?>
