@@ -22,7 +22,7 @@
 ?>
 <main>
   <div class="container">
-    <form class="" action="seleciona_tag.php" method="post">
+    <form class="" action="relatorio.php" method="post">
       <h2>Selecione a TAG que deseja buscar</h2>
       <div class="form-group">
       <select name="tag" id="tag" class="form-control">

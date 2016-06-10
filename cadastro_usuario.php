@@ -189,7 +189,7 @@
 
 
       <div class="form-group">
-        <label for="admin"><input type="checkbox" id="admin" name="admin">&nbsp Administrador</label>
+        <label for="admin"><input type="checkbox" id="admin" value="1" name="admin">&nbsp Administrador</label>
       </div>
 
       <button class="btn btn-primary" type="submit" name="cadastrarUsuario">Cadastrar</button>

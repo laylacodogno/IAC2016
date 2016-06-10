@@ -5,4 +5,3 @@
     <h1>Seja bem vindo, <?php  echo $_SESSION['nome'] ?></h1>
   </div>
 </main>
-<?php include 'footer.php'; ?>
