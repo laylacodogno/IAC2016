@@ -90,24 +90,46 @@ if(!$admin){ ?>
       $resultTG = mysqli_query($conexao, $sqlTG);
       $row2 = mysqli_fetch_row($resultTG);
       $id_pessoa = $row2[1];
-      $sqlDD = "SELECT * FROM pessoas WHERE id='$id_pessoa'";
+      $sqlDD = "SELECT * FROM pessoas WHERE id='$id_pessoa';";
       $resultDD = mysqli_query($conexao, $sqlDD);
       $row3 = mysqli_fetch_row($resultDD);
-      $cpfp = $row3[5];
       $nomep = $row3[1];
+      $loginp = $row3[3];
+      $cpfp = $row3[5];
+      $depid = $row3[6];
+      $endid = $row3[7];
+      $sqlDE = "SELECT * FROM departamentos WHERE id='$depid';";
+      $resultDE = mysqli_query($conexao, $sqlDE);
+      $row4 = mysqli_fetch_row($resultDE);
+      $depp = $row4[1];
+      $sqlEN = "SELECT * FROM enderecos WHERE id='$endid';";
+      $resultEN = mysqli_query($conexao, $sqlEN);
+      $row5 = mysqli_fetch_row($resultEN);
+      $cepp = $row5[1];
+      $nmrp = $row5[2];
+      $comp = $row5[3];
     } ?>
     <br>
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4 center">
+    <br>
+    <div class="container">
       <table class="table-striped table table-bordered">
         <tr>
           <th>NOME &nbsp</th>
           <th>CPF &nbsp</th>
+          <th>LOGIN &nbsp</th>
+          <th>DEPARTAMENTO &nbsp</th>
+          <th>CEP &nbsp</th>
+          <th>NÚMERO &nbsp</th>
+          <th>COMPLEMENTO &nbsp</th>
         </tr>
         <tr>
           <td> <?php echo $nomep ?> &nbsp</td>
           <td> <?php echo $cpfp ?> &nbsp</td>
+          <td> <?php echo $loginp ?> &nbsp</td>
+          <td> <?php echo $depp ?> &nbsp</td>
+          <td> <?php echo $cepp ?> &nbsp</td>
+          <td> <?php echo $nmrp ?> &nbsp</td>
+          <td> <?php echo $comp ?> &nbsp</td>
         </tr>
       </table>
     </div>

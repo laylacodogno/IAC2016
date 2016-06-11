@@ -24,7 +24,7 @@ if((!$login) || ($admin)){ ?>
 <main>
   <div class="container">
     <h1>Seja bem vindo, <?php  echo $_SESSION['nome'] ?> </h1>
-    <a href="relatorio.php" >
+    <a href="relatorio_usuario.php" >
     <div class="carbonad col-md-offset-5 col-md-2" >
         <span class="glyphicon glyphicon-search gi-100"></span>
         <h3>Relatórios</h3>
