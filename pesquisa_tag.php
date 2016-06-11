@@ -1,5 +1,12 @@
 <?php include 'header.php' ?>
 <?php include 'nav.php' ?>
+<?php include 'authenticate.php';
+if(!$admin){ ?>
+  <div class="container alert alert-danger">
+    <h2>Você não tem permissão para acessar essa página, por favor faça login no sistema.</h2>
+  </div>
+<?php  die;
+}?>
 <style media="screen">
   .center{
     text-align: center;

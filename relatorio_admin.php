@@ -1,5 +1,12 @@
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
+<?php include 'authenticate.php';
+if(!$admin){ ?>
+  <div class="container alert alert-danger">
+    <h2>Você não tem permissão para acessar essa página, por favor faça login no sistema.</h2>
+  </div>
+<?php  die;
+}?>
 
 <main>
   <div class="container">
@@ -62,7 +69,7 @@
                 if ($numTags!=0 || $numEntr!=0) {
                     for ($i=0; $i < $numEntr; $i++) {
                       $datahora = explode(" ",$entradas[$i]);
-                      $data=date('d/m/Y', strtotime($entradas[0]));
+                      $data=date('d/m/Y', strtotime($entradas[$i]));
                       ?>
                     <tr>
                       <td> <?php echo $tags[$x]; ?> </td>
