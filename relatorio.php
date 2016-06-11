@@ -54,7 +54,7 @@
         }
       }?>
       <h2 class="text-info">TAG: <?php echo $_POST['tag'] ?></h2>
-          <table class="table-striped table">
+          <table class="table-striped table sortable">
             <tr>
               <th>DATA &nbsp</th>
               <th>HORÁRIO &nbsp</th>

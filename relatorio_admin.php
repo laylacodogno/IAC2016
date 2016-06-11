@@ -45,7 +45,7 @@
               }?>
               <h2> Usuário <?php echo $nameUser; ?> </h2>
               <h4>Número de TAGs: <?php echo $numTags ?></h4>
-              <table id="ordem" class="table table-striped table-bordered">
+              <table id="ordem" class="table table-striped table-bordered sortable">
                 <tr> <th>TAG </th> <th>DATA </th> <th>HORÁRIO </th> </tr>
                 <?php
               for ($x=0; $x < $numTags; $x++) {

@@ -8,6 +8,9 @@
       <script src="assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="assets/sweetalert-master/dist/sweetalert.min.js"></script>
       <script src="assets/main.js"></script>
+      <script src="assets/sorttable.js">
+
+      </script>
 
       <meta charset="utf-8">
       <title>IAC2016</title>
