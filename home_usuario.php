@@ -23,12 +23,12 @@ if((!$login) || ($admin)){ ?>
 </style>
 <main>
   <div class="container">
-    <h1>Seja bem vindo, <?php  echo $_SESSION['nome'] ?> </h1>
+    <h1>Seja bem vindo, <?php  echo $_SESSION['nome'] ?> </h1><br>
     <a href="relatorio_usuario.php" >
-    <div class="carbonad col-md-offset-5 col-md-2" >
+    <p style="text-align:center">
         <span class="glyphicon glyphicon-search gi-100"></span>
-        <h3>Relatórios</h3>
-    </div>
+        <h3 style="text-align:center">Relatórios</h3>
+    </p>
     </a>
   </div>
 </main>
