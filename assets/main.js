@@ -2,6 +2,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
 
     $(".date-field").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    $('.tag-field').mask("999.999.999");
     $('.cpf-field').mask("999.999.999-99");
     $('.cep-field').mask("99.999-999");
     $('.phone-field').focusout(function(){
@@ -16,7 +17,7 @@ $( document ).ready(function() {
       }
     }).trigger('focusout');
 
-    
+
 
 
 });
