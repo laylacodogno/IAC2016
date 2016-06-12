@@ -42,6 +42,7 @@ if(!$admin){ ?>
               $nameUser = $rowP[1];
               $sqlT = "SELECT * FROM tags WHERE pessoa_id = $idUser";
               $resultadoT = mysqli_query($conexao, $sqlT);
+              if ($resultadoT) {
               $numTags = mysqli_num_rows($resultadoT);
               if ($numTags > 0) {
                 $i=0;
@@ -82,7 +83,10 @@ if(!$admin){ ?>
                   echo "Nada para mostrar!";
                 }
               }
+            }else {
+              echo "<h3 class=\"alert alert-warning\">Usuário não encontrado.<h3>";
             }
+          }
           }
         }
         ?>
