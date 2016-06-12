@@ -53,7 +53,7 @@
     <form name="entrada" action="" method="post" onSubmit="return validar_entrada()">
       <div class="form-group">
         <label for="tag">TAG:</label>
-        <input type="text" class="form-control" id="tag" name="tag" placeholder="TAG">
+        <input type="text" class="form-control tag-field" id="tag" name="tag" placeholder="Tag">
       </div>
 
       <button class="btn btn-primary" type="submit" name="registrar">Registrar</button>

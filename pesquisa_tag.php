@@ -28,7 +28,7 @@
       <form class="form-inline col-sm-6" action="pesquisa_tag.php" method="post">
         <div class="form-group">
           <label for="tag">TAG:</label>
-          <input type="number" class="form-control" id="tag" name="tag" placeholder="TAG">
+          <input type="text" class="form-control tag-field" id="tag" name="tag" placeholder="Tag">
         </div>
         <div class="form-group">
           <button class="btn btn-primary" type="submit" name="consultaTAG">Consultar</button>
@@ -42,6 +42,10 @@
       $sqlID = "SELECT * FROM pessoas WHERE cpf='$cpf'";
       $resultID = mysqli_query($conexao,$sqlID);
       $row = mysqli_fetch_row($resultID);
+      if(mysqli_num_rows($resultID) < 1){
+        echo "<br><br><div class=\"container\"><p class=\"alert alert-warning\">O CPF digitado não consta nos registros.</p></div>";
+      }
+      else{
       $id_usuario = $row[0];
       $nome_usuario = $row[1];
       $sqlTP = "SELECT id FROM tags
@@ -55,7 +59,9 @@
           $x++;
         }
       }
+
     } ?>
+
 
     <h3> <?php echo "O usuário " .$nome_usuario ." possui " .$qtdtag ." tags"?></h4>
 
@@ -73,7 +79,9 @@
       <?php } ?>
     </table>
 
+
   <?php }?>
+
 
   <?php if(isset($_POST['tag'])){
     if(!empty($_POST['tag'])){
@@ -82,6 +90,10 @@
       $sqlTG = "SELECT * FROM tags WHERE id='$tag'";
       $resultTG = mysqli_query($conexao, $sqlTG);
       $row2 = mysqli_fetch_row($resultTG);
+      if (mysqli_num_rows($resultTG) < 1){
+        echo "<br><br><div class=\"container\"><p class=\"alert alert-warning\">A tag digitada não consta nos registros.</p></div>";
+      }
+      else{
       $id_pessoa = $row2[1];
       $sqlDD = "SELECT * FROM pessoas WHERE id='$id_pessoa';";
       $resultDD = mysqli_query($conexao, $sqlDD);
@@ -101,7 +113,9 @@
       $cepp = $row5[1];
       $nmrp = $row5[2];
       $comp = $row5[3];
+
     } ?>
+
 
       <table class="table-striped table table-bordered">
         <tr>
@@ -124,7 +138,9 @@
         </tr>
       </table>
 
+
   <?php } ?>
+
 </main>
 <?php function limpaCaracter($valor){
  $valor = trim($valor);
