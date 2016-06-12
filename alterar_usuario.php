@@ -27,6 +27,9 @@ if(!$admin){ ?>
       $numero = $rowEnd[2];
       $compl = $rowEnd[3];
       $ptRef = $rowEnd[4];
+      $sqlTA = "SELECT * FROM tags WHERE pessoa_id = '$idUser'";
+      $resultTA = mysqli_query($conexao, $sqlTA);
+      $temtag = mysqli_num_rows($resultTA);
     }
   }
   if (isset($_POST['salvar'])) {
@@ -41,6 +44,12 @@ if(!$admin){ ?>
       $descr[1] = 'nome';
       $descr[2] = 'departamento_id';
       $descr[3] = 'endereco_id';
+      $cpf = $update[0];
+      $nome = $update[1];
+      $cep = $update[3];
+      $numero = $update[4];
+      $compl = $update[5];
+      $ptRef = $update[6];
 
       $sqlB = "SELECT * FROM enderecos WHERE cep = '$update[3]' and numero = '$update[4]' and complemento = '$update[5]';";
       $resultadoB = mysqli_query($conexao, $sqlB);
@@ -64,6 +73,15 @@ if(!$admin){ ?>
       }
 
     }
+    if (isset($_POST['apagar'])) {
+      include 'conexao.php';
+      $cpf = $_POST['apagar'];
+      $sqlD = "DELETE FROM pessoas WHERE cpf = '$cpf';";
+      $resultadoD = mysqli_query($conexao, $sqlD);
+      if ($resultadoD){
+      echo "<h4 class=\"alert alert-success\"> Usuário removido com sucesso.</h4>";
+      }
+    }
 ?>
 
 <main>
@@ -80,7 +98,7 @@ if(!$admin){ ?>
       </div>
     </form>
 
-    <?php if (isset($_POST['usuario'])): ?>
+    <?php if (isset($_POST['usuario']) && (!isset($_POST['apagar']))){ if ($idUser != NULL) {?>
       <h2>Editar</h2>
       <form class="" name="editar" action="alterar_usuario.php" method="post">
           <div class="form-group">
@@ -151,9 +169,12 @@ if(!$admin){ ?>
               <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ponto Referencia" value="<?php echo $ptRef ?>">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" name="salvar">Salvar</button>
+          <button type="submit" class="btn btn-success" name="salvar">Salvar</button>
+          <button class="btn btn-danger" type="" value="<?php echo $cpf ?>" name="apagar" <?php if ($temtag > 0){ echo "disabled=\"\""; }  ?>>Apagar Usuário</button>
+
+          <?php if ($temtag > 0){ echo "<br><br><p class=\"text-warning\">Para deletar um usuário é necessário que não tenha nenhuma tag relacionada a ele.</p>"; } ?>
       </form>
-    <?php endif; ?>
+    <?php }else echo "<h3 class=\"alert alert-warning\">Usuário não Encontrado</h3>";  } ?>
   </div>
 </main>
 <?php function limpaCaracter($valor){
@@ -164,4 +185,75 @@ if(!$admin){ ?>
  $valor = str_replace("/", "", $valor);
  return $valor;
 } ?>
+
+<script type="text/javascript">
+function limpa_formulário_cep() {
+          // Limpa valores do formulário de cep.
+          $("#rua").val("");
+          $("#bairro").val("");
+          $("#cidade").val("");
+          $("#uf").val("");
+          $("#ibge").val("");
+      }
+
+      //Quando o campo cep perde o foco.
+      $("#cep").blur(function() {
+
+          //Nova variável "cep" somente com dígitos.
+          var cep = $(this).val().replace(/\D/g, '');
+
+          //Verifica se campo cep possui valor informado.
+          if (cep != "") {
+
+              //Expressão regular para validar o CEP.
+              var validacep = /^[0-9]{8}$/;
+
+              //Valida o formato do CEP.
+              if(validacep.test(cep)) {
+
+                  //Preenche os campos com "..." enquanto consulta webservice.
+                  $("#rua").val("...")
+                  $("#bairro").val("...")
+                  $("#cidade").val("...")
+                  $("#uf").val("...")
+                  $("#ibge").val("...")
+
+                  //Consulta o webservice viacep.com.br/
+                  $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                      if (!("erro" in dados)) {
+                          //Atualiza os campos com os valores da consulta.
+                          $("#rua").val(dados.logradouro);
+                          $("#bairro").val(dados.bairro);
+                          $("#cidade").val(dados.localidade);
+                          $("#uf").val(dados.uf);
+                          $("#ibge").val(dados.ibge);
+
+                          $('#cep').parent().removeClass('has-error');
+                          $('#cep').parent().find('.help-block').addClass('hide');
+                      } //end if.
+                      else {
+                          //CEP pesquisado não foi encontrado.
+                          limpa_formulário_cep();
+                          $('#cep').parent().addClass('has-error');
+                          $('#cep').parent().find('.help-block').removeClass('hide');
+                      }
+                  });
+              } //end if.
+              else {
+                  //cep é inválido.
+                  limpa_formulário_cep();
+                  $('#cep').parent().addClass('has-error');
+                  $('#cep').parent().find('.help-block').removeClass('hide');;
+              }
+          } //end if.
+          else {
+              //cep sem valor, limpa formulário.
+              limpa_formulário_cep();
+              $('#cep').parent().removeClass('has-error');
+              $('#cep').parent().find('.help-block').addClass('hide');
+          }
+      });
+</script>
+
 <?php include 'footer.php' ?>
