@@ -116,7 +116,7 @@
 
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
+        <input type="text" class="form-control" maxlength="20" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
       </div>
       <div class="form-group">
         <label for="departamento">Departamento:</label>
@@ -170,22 +170,22 @@
 
         <div class="form-group">
           <label for="numero">Numero:</label>
-          <input type="number" class="form-control" id="numero" name="numero" placeholder="Numero" value="<?php echo $numero ?>">
+          <input type="number" class="form-control" max="999" id="numero" name="numero" placeholder="Numero" value="<?php echo $numero ?>">
         </div>
         <div class="form-group">
           <label for="complemento">Complemento:</label>
-          <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo $complemento ?>">
+          <input type="text" class="form-control" maxlength="10" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo $complemento ?>">
         </div>
         <div class="form-group">
           <label for="referencia">Ponto Referencia:</label>
-          <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ponto Referencia" value="<?php echo $referencia ?>">
+          <input type="text" class="form-control" maxlength="50" id="referencia" name="referencia" placeholder="Ponto Referencia" value="<?php echo $referencia ?>">
         </div>
       </div>
 
       <div class="form-login">
         <div class="form-group">
           <label for="login">Login:</label>
-          <input type="text" class="form-control" id="login" name="login" placeholder="Login" value="<?php echo $login ?>">
+          <input type="text" class="form-control" maxlength="15" id="login" name="login" placeholder="Login" value="<?php echo $login ?>">
           <span class="help-block hide">O login deve conter 4 dígitos ou mais.</span>
         </div>
         <div class="form-group">
