@@ -1,24 +1,20 @@
 <?php include 'header.php' ?>
 <?php include 'nav.php' ?>
-<?php include 'authenticate.php';
-if(!$admin){ ?>
-  <div class="container alert alert-danger">
-    <h2>Você não tem permissão para acessar essa página, por favor faça login no sistema.</h2>
-  </div>
-<?php  die;
-}?>
-<style media="screen">
-  .center{
-    text-align: center;
-  }
-</style>
+
+
 <main>
   <div class="container">
-  <h1>Consulta de TAG:</h1>
-  <br>
-  <br>
-  </div>
-  <div class="container">
+    <?php include 'authenticate.php';
+    if(!$admin){ ?>
+      <div class="alert alert-danger">
+        <h2>Você não tem permissão para acessar essa página, por favor faça login no sistema.</h2>
+      </div>
+    <?php  die;
+    }?>
+
+  <h1 class="text-info">Consulta de TAG</h1>
+
+
     <form class="form-inline col-sm-6" action="pesquisa_tag.php" method="post">
       <div class="form-group">
         <label for="cpf">CPF:</label>
@@ -38,8 +34,7 @@ if(!$admin){ ?>
           <button class="btn btn-primary" type="submit" name="consultaTAG">Consultar</button>
         </div>
       </form>
-    </div>
-  </div>
+
   <?php if (isset($_POST['cpf'])){
     if ($_POST['cpf'] != ""){
       $cpf=limpaCaracter($_POST['cpf']);
@@ -61,12 +56,10 @@ if(!$admin){ ?>
         }
       }
     } ?>
-  <br>
-  <div class="container center">
+
     <h3> <?php echo "O usuário " .$nome_usuario ." possui " .$qtdtag ." tags"?></h4>
-  </div>
-  <br>
-  <div class="container center">
+
+
     <table class="table-striped table table-bordered">
       <tr>
         <th>TAG &nbsp</th>
@@ -79,7 +72,7 @@ if(!$admin){ ?>
         </tr>
       <?php } ?>
     </table>
-  </div>
+
   <?php }?>
 
   <?php if(isset($_POST['tag'])){
@@ -109,9 +102,7 @@ if(!$admin){ ?>
       $nmrp = $row5[2];
       $comp = $row5[3];
     } ?>
-    <br>
-    <br>
-    <div class="container">
+
       <table class="table-striped table table-bordered">
         <tr>
           <th>NOME &nbsp</th>
@@ -132,7 +123,7 @@ if(!$admin){ ?>
           <td> <?php echo $comp ?> &nbsp</td>
         </tr>
       </table>
-    </div>
+
   <?php } ?>
 </main>
 <?php function limpaCaracter($valor){

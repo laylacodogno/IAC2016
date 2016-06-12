@@ -1,0 +1,77 @@
+body{
+  background-color: #293a46;
+  color: white;
+}
+
+h1{
+  color: #cfd2da;
+}
+
+/* navbar */
+.navbar{
+  background-color: #293a46;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.navbar .navbar-brand{
+  color: white;
+}
+.navbar .navbar-brand:hover{
+  color: #1ca8dd;
+}
+.navbar-default .navbar-nav > li > a{
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover{
+  color: white;
+  background-color: #1ca8dd;
+}
+.container{
+  max-width: 992px;
+  width: 90%;
+}
+
+/*index*/
+main.index .jumbotron{
+  background-color: #434857;
+}
+
+/*home admin */
+main.home-admin{
+
+}
+.menu-admin, .menu-user{
+  text-align: center;
+  margin: 40px;
+}
+
+.menu-option{
+  display: inline-block;
+  text-decoration: none;
+  margin: 15px;
+}
+
+.menu-option > span{
+  display: block;
+  color: white;
+  padding: 10px;
+
+}
+.menu-option:hover > span{
+  background-color: #434857;
+}
+
+.menu-option > span.option-name{
+  font-size: 14px;
+}
+.menu-option > span.glyphicon{
+  font-size: 25px;
+}
+
+
+.restricao-dia.small {
+  display: inline-block;
+  max-width: 12%;
+  margin: 5px;
+}

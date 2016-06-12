@@ -181,18 +181,17 @@ if(!$admin){ ?>
         <label for="tagMaster">Tag Master:</label>
         <input type="text" class="form-control tag-field" id="tagMaster" name="tagMaster" placeholder="Tag Master">
       </div>
-      <div class="form-group">
+      <div class="form-group medium">
         <label for="dataInicio">Data Inicio:</label>
         <input type="date" class="form-control" id="dataInicio" name="dataInicio" placeholder="Data Inicio">
       </div>
-      <div class="form-group">
+      <div class="form-group medium">
         <label for="dataFim">Data Fim:</label>
         <input type="date" class="form-control" id="dataFim" name="dataFim" placeholder="Data Fim">
       </div>
-      <p>
-        Selecione os dias permitidos e o horario.
-      </p>
-      <div class="restricao-dia">
+      <h3>Insira os horarios dos dias permitidos:</h3>
+      <p>dias deixados em branco serão considerados restritos</p>
+      <div class="restricao-dia small">
         <p>
           Segunda
         </p>
@@ -205,7 +204,7 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="segundaSai" name="segundaSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
         <p>
           Terça
         </p>
@@ -218,7 +217,10 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="tercaSai" name="tercaSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
+        <p>
+          Quarta
+        </p>
         <div class="form-group">
           <label for="quartaEnt">Horario Entrada:</label>
           <input type="time" class="form-control" id="quartaEnt" name="quartaEnt" placeholder="Horario Entrada">
@@ -228,7 +230,10 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="quartaSai" name="quartaSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
+        <p>
+          Quinta
+        </p>
         <div class="form-group">
           <label for="quintaEnt">Horario Entrada:</label>
           <input type="time" class="form-control" id="quintaEnt" name="quintaEnt" placeholder="Horario Entrada">
@@ -238,7 +243,10 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="quintaSai" name="quintaSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
+        <p>
+          Sexta
+        </p>
         <div class="form-group">
           <label for="sextaEnt">Horario Entrada:</label>
           <input type="time" class="form-control" id="sextaEnt" name="sextaEnt" placeholder="Horario Entrada">
@@ -248,7 +256,10 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="sextaSai" name="sextaSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
+        <p>
+          Sábado
+        </p>
         <div class="form-group">
           <label for="sabadoEnt">Horario Entrada:</label>
           <input type="time" class="form-control" id="sabadoEnt" name="sabadoEnt" placeholder="Horario Entrada">
@@ -258,7 +269,10 @@ if(!$admin){ ?>
           <input type="time" class="form-control" id="sabadoSai" name="sabadoSai" placeholder="Horario Saida">
         </div>
       </div>
-      <div class="restricao-dia">
+      <div class="restricao-dia small">
+        <p>
+          Domingo
+        </p>
         <div class="form-group">
           <label for="domingoEnt">Horario Entrada:</label>
           <input type="time" class="form-control" id="domingoEnt" name="domingoEnt" placeholder="Horario Entrada">
@@ -269,8 +283,11 @@ if(!$admin){ ?>
         </div>
       </div>
 
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" name="cadastrarTag">Cadastrar</button>
 
-      <button class="btn btn-primary" type="submit" name="cadastrarTag">Cadastrar</button>
+      </div>
+
     </form>
     <script language="javascript" type="text/javascript">
         function validar_cadastroTag() {

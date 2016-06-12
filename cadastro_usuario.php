@@ -34,6 +34,7 @@
               }
               $nome = $_POST['nome'];
               $login = $_POST['login'];
+
               $sqllogin = "SELECT * FROM pessoas WHERE login='$login'";
               $resultlogin = mysqli_query($conexao, $sqllogin);
               if (mysqli_num_rows($resultlogin) > 0) {
@@ -117,6 +118,10 @@
       <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" maxlength="20" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
+      </div>
+      <div class="form-group">
+        <label for="imagem">Imagem:</label>
+        <input type="file" class="form-control" id="imagem" name="imagem" placeholder="Insira uma Imagem">
       </div>
       <div class="form-group">
         <label for="departamento">Departamento:</label>

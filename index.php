@@ -11,15 +11,13 @@
 else{ ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
-<main>
+<main class="index">
   <div class="container">
-    <div class="jumbotron" style="background-color: #e3f2fd">
-      <h1 style="text-align:center;">Sistema de Acesso Eletrônico</h1>
+    <div class="jumbotron">
+    <div class="container">
+        <h1>Sistema de Acesso Eletrônico</h1>
+        <p><a class="btn btn-primary btn-lg" href="entrada.php">Entrar com TAG</a></p>
     </div>
-      <p style="text-align:center;" >
-        <a class="btn btn-primary btn-lg" href="entrada.php">Entrar com TAG</a>
-      </p>
-  </div>
 </main>
 <?php }?>
 <?php include 'footer.php'; ?>

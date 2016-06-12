@@ -2,6 +2,7 @@
 <html lang="pt-BR">
     <head>
       <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="assets/main.css"/>
       <link rel="stylesheet" type="text/css" href="assets/sweetalert-master/dist/sweetalert.css">
       <script src="assets/jquery-1.12.4.js"></script>
       <script src="assets/jquery.maskedinput.js"></script>
