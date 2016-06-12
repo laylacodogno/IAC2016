@@ -9,14 +9,6 @@ if((!$login) || ($admin)){ ?>
 }?>
 <style media="screen">
   .gi-100{font-size: 6em;}
-  .carbonad {
-    width: auto ;
-    height: auto ;
-    padding: 1.25rem ;
-    margin: 0px, auto; ;
-    margin-top: 40px;
-    text-align: center;
-    border: 0 }
   a {
     text-decoration: none;
   }

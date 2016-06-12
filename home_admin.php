@@ -22,5 +22,28 @@ $qtdclient = ($qtdusers - $qtdadmin);
   </div>
   <div class="container">
     <h4>O sistema possui atualmente <?php echo $qtdusers ?> usuários, sendo <?php echo $qtdadmin ?> administradores e <?php echo $qtdclient ?> clientes.</h4>
+
+<p style="text-align:center">
+  <a href="relatorio_admin.php" >
+      <span class="glyphicon glyphicon-list gi-100"></span>
+      <span>Relatórios</span>
+  </a>
+  <a href="alterar_usuario.php" >
+      <span class="glyphicon glyphicon-user gi-100"></span>
+      <span>Alterar Usuário</span>
+  </a>
+  <a href="entrada.php" >
+      <span class="glyphicon glyphicon-home gi-100"></span>
+      <span>Entrar com TAG</span>
+  </a>
+  <a href="pesquisa_tag.php" >
+      <span class="glyphicon glyphicon-search gi-100"></span>
+      <span>Pesquisar TAG</span>
+  </a>
+  <a href="alterar_tag.php" >
+      <span class="glyphicon glyphicon-tag gi-100"></span>
+      <span>Alterar TAG</span>
+  </a>
+</p>
   </div>
 </main>
