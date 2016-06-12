@@ -13,7 +13,12 @@ else{ ?>
 <?php include 'nav.php'; ?>
 <main>
   <div class="container">
-    <h1>Seja bem vindo</h1>
+    <div class="jumbotron" style="background-color: #e3f2fd">
+      <h1 style="text-align:center;">Sistema de Acesso Eletrônico</h1>
+    </div>
+      <p style="text-align:center;" >
+        <a class="btn btn-primary btn-lg" href="entrada.php">Entrar com TAG</a>
+      </p>
   </div>
 </main>
 <?php }?>
