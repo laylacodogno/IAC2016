@@ -1,8 +1,9 @@
-  <?php include 'header.php'; ?>
+<?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <main>
   <div class="container">
     <?php
+    $CPF = $nome = $login = $departamento = $CEP = $numero = $complemento = $referencia = "";
       if (isset($_POST['cadastrarUsuario'])) {
         if (!empty($_POST['cpf']) &&
             !empty($_POST['nome']) &&
@@ -21,17 +22,32 @@
              $valor = str_replace("/", "", $valor);
              return $valor;
             }
-
+              $error = false;
               $CPF = limpaCaracter($_POST['cpf']);
+              include 'conexao.php';
+              $sqlcpf = "SELECT * FROM pessoas WHERE cpf='$CPF'";
+              $resultcpf = mysqli_query($conexao, $sqlcpf);
+              if (mysqli_num_rows($resultcpf) > 0){
+                $duplicate = true;
+                echo "<p class=\"text-warning\">Já existe um usuário cadastrado com o CPF '$CPF'.</p>";
+                $CPF = "";
+              }
               $nome = $_POST['nome'];
               $login = $_POST['login'];
+              $sqllogin = "SELECT * FROM pessoas WHERE login='$login'";
+              $resultlogin = mysqli_query($conexao, $sqllogin);
+              if (mysqli_num_rows($resultlogin) > 0) {
+                $duplicate = true;
+                echo "<p class=\"text-warning\">Já existe um usuário cadastrado com o login '$login', por favor escolha outro.</p>";
+                $login = "";
+              }
               $senha = md5($_POST['senha']);
               $departamento = intval($_POST['departamento']);
-              if (!empty($_POST['admin'])) {
-                $admin = intval($_POST['admin']);
-              }else{
+              // if (!empty($_POST['admin'])) {
+              //   $admin = intval($_POST['admin']);
+              // }else{
                 $admin = 0;
-              }
+              // }
 
               //dados salvar tabela endereço
               $CEP = limpaCaracter($_POST['cep']);
@@ -41,34 +57,34 @@
 
               //  var_dump($CPF, $nome, $login, $senha, $admin, $CEP,  $numero,  $complemento,  $referencia );
               //  die;
-              include 'conexao.php';
-              $sqlB = "SELECT * FROM enderecos WHERE cep = '$CEP' and numero = '$numero' and complemento = '$complemento';";
-              $resultadoB = mysqli_query($conexao, $sqlB);
-              if (mysqli_num_rows($resultadoB) >= 1){
-                $row = mysqli_fetch_row($resultadoB);
-                $endereco_id = $row[0];
-              }
-              else{
-                $sqlE = "INSERT INTO enderecos (cep, numero, complemento, ponto_referencia)
-                        VALUES ('$CEP', '$numero', '$complemento', '$referencia');";
-                $resultadoE = mysqli_query($conexao, $sqlE);
-                $endereco_id = mysqli_insert_id($conexao);
-              }
-              if (isset($endereco_id)) {
-                $sqlP = "INSERT INTO pessoas (cpf, nome, login, senha, administrador, departamento_id, endereco_id)
-                        VALUES ('$CPF', '$nome', '$login', '$senha', '$admin', '$departamento', '$endereco_id');";
-                $resultado = mysqli_query($conexao, $sqlP);
-              }
-
-              if (!$resultado) {
-                if (mysql_errno() == 1062) {
-                    header('location:cadastro_usuario.php?error=1062');
-                }else{
-                  header('location:cadastro_usuario.php?error=1');
+              if (!$duplicate) {
+                $sqlB = "SELECT * FROM enderecos WHERE cep = '$CEP' and numero = '$numero' and complemento = '$complemento';";
+                $resultadoB = mysqli_query($conexao, $sqlB);
+                if (mysqli_num_rows($resultadoB) >= 1){
+                  $row = mysqli_fetch_row($resultadoB);
+                  $endereco_id = $row[0];
+                }
+                else{
+                  $sqlE = "INSERT INTO enderecos (cep, numero, complemento, ponto_referencia)
+                          VALUES ('$CEP', '$numero', '$complemento', '$referencia');";
+                  $resultadoE = mysqli_query($conexao, $sqlE);
+                  $endereco_id = mysqli_insert_id($conexao);
+                }
+                if (isset($endereco_id)) {
+                  $sqlP = "INSERT INTO solicitacoes (cpf, nome, login, senha, administrador, departamento_id, endereco_id)
+                          VALUES ('$CPF', '$nome', '$login', '$senha', '$admin', '$departamento', '$endereco_id');";
+                  $resultado = mysqli_query($conexao, $sqlP);
                 }
 
-              }else{
-                header('location:cadastro_usuario.php?sucess=1');
+                if (!$resultado) {
+                  if (mysql_errno() == 1062) {
+                      header('location:cadastro_usuario.php?error=1062');
+                  }else{
+                    header('location:cadastro_usuario.php?error=1');
+                  }
+                }else{
+                  header('location:cadastro_usuario.php?sucess=1');
+                }
               }
         }else{
           header('location:cadastro_usuario.php?error=2');
@@ -76,7 +92,6 @@
       }
       if (!empty($_GET['error'])) {
           $error = $_GET['error'];
-
           if ($error == 1) {
               echo "<p class=\"text-warning\">Cadastro Não Efetuado.</p>";
 
@@ -87,7 +102,7 @@
       }else if (!empty($_GET['sucess'])) {
         $sucess = $_GET['sucess'];
         if ($sucess == 1) {
-          echo "<p class=\"text-warning\">Cadastro Efetuado.</p>";
+          echo "<p class=\"text-warning\">Seu cadastro foi enviado e será aprovado por um administrador em breve.</p>";
         }
       }
 
@@ -96,12 +111,12 @@
     <form name="cadastroUsuario" action="" method="post" onSubmit="return validar_cadastroUsuario()">
       <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" class="form-control cpf-field" id="cpf" name="cpf" placeholder="CPF">
+        <input type="text" class="form-control cpf-field" id="cpf" name="cpf" placeholder="CPF" value="<?php echo $CPF ?>">
       </div>
 
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
       </div>
       <div class="form-group">
         <label for="departamento">Departamento:</label>
@@ -133,7 +148,7 @@
       <div class="form-endereco">
         <div class="form-group">
           <label for="cep">CEP:</label>
-          <input type="text" class="form-control cep-field" id="cep" name="cep" placeholder="CEP">
+          <input type="text" class="form-control cep-field" id="cep" name="cep" placeholder="CEP" value="<?php echo $CEP ?>">
           <span class="help-block hide">CEP não encontrado.</span>
         </div>
         <div class="form-group">
@@ -155,22 +170,22 @@
 
         <div class="form-group">
           <label for="numero">Numero:</label>
-          <input type="number" class="form-control" id="numero" name="numero" placeholder="Numero">
+          <input type="number" class="form-control" id="numero" name="numero" placeholder="Numero" value="<?php echo $numero ?>">
         </div>
         <div class="form-group">
           <label for="complemento">Complemento:</label>
-          <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento">
+          <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" value="<?php echo $complemento ?>">
         </div>
         <div class="form-group">
           <label for="referencia">Ponto Referencia:</label>
-          <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ponto Referencia">
+          <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ponto Referencia" value="<?php echo $referencia ?>">
         </div>
       </div>
 
       <div class="form-login">
         <div class="form-group">
           <label for="login">Login:</label>
-          <input type="text" class="form-control" id="login" name="login" placeholder="Login">
+          <input type="text" class="form-control" id="login" name="login" placeholder="Login" value="<?php echo $login ?>">
           <span class="help-block hide">O login deve conter 4 dígitos ou mais.</span>
         </div>
         <div class="form-group">
@@ -188,9 +203,9 @@
 
 
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="admin"><input type="checkbox" id="admin" value="1" name="admin">&nbsp Administrador</label>
-      </div>
+      </div> -->
 
       <button class="btn btn-primary" type="submit" name="cadastrarUsuario">Cadastrar</button>
     </form>
