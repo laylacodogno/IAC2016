@@ -78,13 +78,22 @@
     </table>
 
 
-  <?php }}} ?>
+  <?php }}}
+
+  function limpaCaracter($valor){
+   $valor = trim($valor);
+   $valor = str_replace(".", "", $valor);
+   $valor = str_replace(",", "", $valor);
+   $valor = str_replace("-", "", $valor);
+   $valor = str_replace("/", "", $valor);
+   return $valor;
+ } ?>
 
 
   <?php if(isset($_POST['tag'])){
     if(!empty($_POST['tag'])){
       include 'conexao.php';
-      $tag = $_POST['tag'];
+      $tag = limpaCaracter($_POST['tag']);
       $sqlTG = "SELECT * FROM tags WHERE id='$tag'";
       $resultTG = mysqli_query($conexao, $sqlTG);
       $row2 = mysqli_fetch_row($resultTG);
@@ -138,12 +147,4 @@
   <?php }}} ?>
 
 </main>
-<?php function limpaCaracter($valor){
- $valor = trim($valor);
- $valor = str_replace(".", "", $valor);
- $valor = str_replace(",", "", $valor);
- $valor = str_replace("-", "", $valor);
- $valor = str_replace("/", "", $valor);
- return $valor;
-} ?>
 <?php include 'footer.php' ?>
