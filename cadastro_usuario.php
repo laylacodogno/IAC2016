@@ -112,12 +112,12 @@
     <form name="cadastroUsuario" action="" method="post" onSubmit="return validar_cadastroUsuario()">
       <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" class="form-control cpf-field" id="cpf" name="cpf" placeholder="CPF" value="<?php echo $CPF ?>">
+        <input type="text" class="form-control cpf-field" id="cpf" name="cpf" placeholder="CPF">
       </div>
 
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" maxlength="20" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
+        <input type="text" class="form-control" maxlength="20" id="nome" name="nome" placeholder="Nome">
       </div>
       <div class="form-group">
         <label for="departamento">Departamento:</label>
@@ -346,17 +346,17 @@
 
 // ----------------------------- Validação on Submit  ---------------------------------
       function validar_cadastroUsuario() {
-        var cpf = cadastrarUsuario.cpf.value;
+        var cpf = cadastroUsuario.cpf.value;
 
-        var nome = cadastrarUsuario.nome.value;
-        var login = cadastrarUsuario.login.value;
-        var senha = cadastrarUsuario.senha.value;
-        var senhaConf = cadastrarUsuario.senhaConf.value;
-        var admin = cadastrarUsuario.admin.value;
-        var departamento = cadastrarUsuario.departamento.value;
+        var nome = cadastroUsuario.nome.value;
+        var login = cadastroUsuario.login.value;
+        var senha = cadastroUsuario.senha.value;
+        var senhaConf = cadastroUsuario.senhaConf.value;
+        // var admin = cadastroUsuario.admin.value;
+        var departamento = cadastroUsuario.departamento.value;
 
-        var cep = cadastrarUsuario.cep.value;
-        var numero = cadastrarUsuario.numero.value;
+        var cep = cadastroUsuario.cep.value;
+        var numero = cadastroUsuario.numero.value;
 
         if (cpf == '' || nome == '' || login == ''|| senha == ''|| senhaConf == '' || departamento == '' || cep == '' || numero == '' ) {
           sweetAlert("Oops...", "Preencha todos os campos.", "error");
