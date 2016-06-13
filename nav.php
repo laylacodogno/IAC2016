@@ -23,9 +23,10 @@
                       <li><a href="alterar_usuario.php">Alterar Usuário</a></li>
                       <li role="separator" class="divider"></li>
 
+                      <li><a href="cadastro_tag.php">Cadastrar TAG</a></li>
                       <li><a href="pesquisa_tag.php">Pesquisar TAG</a></li>
                       <li><a href="alterar_tag.php">Alterar TAG</a></li>
-                      <li><a href="entrada.php" >Entrar TAG</a></li>
+                      <li><a href="entrada.php">Entrar TAG</a></li>
                     </ul>
                   </li>';
               echo '<li><a href="logout.php">Logout</a></li>';
