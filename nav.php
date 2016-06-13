@@ -21,6 +21,7 @@
                     <ul class="dropdown-menu">
                       <li><a href="relatorio_admin.php">Relatórios</a></li>
                       <li><a href="alterar_usuario.php">Alterar Usuário</a></li>
+                      <li><a href="aprovar_cadastro.php">Aprovar Usuário</a></li>
                       <li role="separator" class="divider"></li>
 
                       <li><a href="cadastro_tag.php">Cadastrar TAG</a></li>

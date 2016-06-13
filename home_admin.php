@@ -26,6 +26,10 @@ $qtdclient = ($qtdusers - $qtdadmin);
           <span class="glyphicon glyphicon-list gi-100"></span>
           <span class="option-name">Relatórios</span>
       </a>
+      <a class="menu-option" href="aprovar_cadastro.php" >
+          <span class="glyphicon glyphicon-check gi-100"></span>
+          <span class="option-name">Aprovar Usuário</span>
+      </a>
       <a class="menu-option" href="alterar_usuario.php" >
           <span class="glyphicon glyphicon-user gi-100"></span>
           <span class="option-name">Alterar Usuário</span>
