@@ -107,7 +107,7 @@
       }else if (!empty($_GET['sucess'])) {
         $sucess = $_GET['sucess'];
         if ($sucess == 1) {
-          echo "<p class=\"text-warning\">Seu cadastro foi enviado e será aprovado por um administrador em breve.</p>";
+          echo "<p class=\"text-success\">Seu cadastro foi enviado e será aprovado por um administrador em breve.</p>";
         }
       }
 

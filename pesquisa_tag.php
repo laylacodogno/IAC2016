@@ -64,7 +64,7 @@
     <h3> <?php echo "O usuário " .$nome_usuario ." possui " .$qtdtag ." tags"?></h4>
 
 
-    <table class="table-striped table table-bordered">
+    <table class="table table-bordered">
       <tr>
         <th>TAG &nbsp</th>
         <th>Número &nbsp</th>
@@ -113,7 +113,7 @@
       $comp = $row5[3]; ?>
 
 
-      <table class="table-striped table table-bordered">
+      <table class="table table-bordered">
         <tr>
           <th>NOME &nbsp</th>
           <th>CPF &nbsp</th>

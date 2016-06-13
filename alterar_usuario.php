@@ -79,7 +79,7 @@ if(!$admin){ ?>
       $sqlD = "DELETE FROM pessoas WHERE cpf = '$cpf';";
       $resultadoD = mysqli_query($conexao, $sqlD);
       if ($resultadoD){
-      echo "<h4 class=\"alert alert-success\"> Usuário removido com sucesso.</h4>";
+      echo "<p class=\"text-success\"> Usuário removido com sucesso.</p>";
       }
     }
 ?>
@@ -174,7 +174,7 @@ if(!$admin){ ?>
 
           <?php if ($temtag > 0){ echo "<br><br><p class=\"text-warning\">Para deletar um usuário é necessário que não tenha nenhuma tag relacionada a ele.</p>"; } ?>
       </form>
-    <?php }else echo "<h3 class=\"alert alert-warning\">Usuário não Encontrado</h3>";  } ?>
+    <?php }else echo "<p class=\"text-warning\">Usuário não Encontrado</p>";  } ?>
   </div>
 </main>
 <?php function limpaCaracter($valor){

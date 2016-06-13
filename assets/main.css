@@ -7,6 +7,16 @@ h1{
   color: #cfd2da;
 }
 
+p.text-warning{
+  background-color: #e64759;
+  color: white;
+  padding: 10px;
+}
+p.text-success{
+  background-color: #1bc98e;
+  color: white;
+  padding: 10px;
+}
 /* navbar */
 .navbar{
   background-color: #293a46;

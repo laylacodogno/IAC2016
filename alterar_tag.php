@@ -32,11 +32,11 @@ function limpaCaracter($valor){
         $dataInicio = $rowTag[3];
         $dataFim = $rowTag[4];
         if ($mestra == 1){
-          echo "<h4 class=\"alert alert-warning\">Não é possível alterar nem remover tag mestra</h4> ";
+          echo "<p class=\"text-warning\">Não é possível alterar nem remover tag mestra</p> ";
           $tag="";
         }
       }else {
-        echo "<h4 class=\"alert alert-warning\">Tag nao encontrada!</h4> ";
+        echo "<p class=\"text-warning\">Tag nao encontrada!</p> ";
       }
     }
   }
@@ -48,7 +48,7 @@ function limpaCaracter($valor){
     $sqlAL = "UPDATE tags SET pessoa_id = '$update' WHERE id = $tagA;";
     $resultadoAL = mysqli_query($conexao, $sqlAL);
     if ($resultadoAL){
-    echo "<h4 class=\"alert alert-success\"> TAG alterada com sucesso.</h4>";
+    echo "<p class=\"text-success\"> TAG alterada com sucesso.</p>";
     }
     }
   }
@@ -57,7 +57,7 @@ function limpaCaracter($valor){
     $sqlD = "DELETE FROM tags WHERE id = '$tagD';";
     $resultadoD = mysqli_query($conexao, $sqlD);
     if ($resultadoD){
-    echo "<h4 class=\"alert alert-success\"> TAG removida com sucesso.</h4>";
+    echo "<p class=\"text-success\"> TAG removida com sucesso.</p>";
     }
   }
 ?>
