@@ -58,9 +58,7 @@
           $tags[$x] = $row["id"];
           $x++;
         }
-      }
-
-    } ?>
+      } ?>
 
 
     <h3> <?php echo "O usuário " .$nome_usuario ." possui " .$qtdtag ." tags"?></h4>
@@ -80,7 +78,7 @@
     </table>
 
 
-  <?php }?>
+  <?php }}} ?>
 
 
   <?php if(isset($_POST['tag'])){
@@ -112,9 +110,7 @@
       $row5 = mysqli_fetch_row($resultEN);
       $cepp = $row5[1];
       $nmrp = $row5[2];
-      $comp = $row5[3];
-
-    } ?>
+      $comp = $row5[3]; ?>
 
 
       <table class="table-striped table table-bordered">
@@ -139,7 +135,7 @@
       </table>
 
 
-  <?php } ?>
+  <?php }}} ?>
 
 </main>
 <?php function limpaCaracter($valor){
