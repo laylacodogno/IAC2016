@@ -16,7 +16,6 @@
             $sql = "INSERT INTO entradas (data, tag_id)
             VALUES (CURRENT_TIMESTAMP,'$tag');";
             $resultado = mysqli_query($conexao, $sql);
-
             if ($resultado) {
               //echo "Sucesso1";
               header('location:entrada.php?sucess=1');

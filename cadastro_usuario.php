@@ -1,5 +1,9 @@
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
+<?php
+//if(isset($_FILES["arquivo"])){
+  var_dump($_FILES["arquivo"]);
+//} ?>
 <main>
   <div class="container">
     <?php
@@ -121,7 +125,7 @@
       </div>
       <div class="form-group">
         <label for="imagem">Imagem:</label>
-        <input type="file" class="form-control" id="imagem" name="imagem" placeholder="Insira uma Imagem">
+        <input type="file" class="form-control" name="arquivo" placeholder="Arquivo" value="">
       </div>
       <div class="form-group">
         <label for="departamento">Departamento:</label>
@@ -203,7 +207,6 @@
           <input type="password" class="form-control" id="senhaConf" name="senhaConf" placeholder="Confirmar Senha">
         </div>
       </div>
-
 
 
 
