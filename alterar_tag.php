@@ -25,7 +25,7 @@
             $dataInicio = $rowTag[3];
             $dataFim = $rowTag[4];
           }else {
-            echo "<h4 class=\"alert alert-warning\">Tag nao encontrado!</h4> ";
+            echo "<p class=\"text-warning\">Tag nao encontrado!</p> ";
           }
         }
       }

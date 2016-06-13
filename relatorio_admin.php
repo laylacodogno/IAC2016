@@ -53,7 +53,7 @@ if(!$admin){ ?>
               }?>
               <h2> Usuário <?php echo $nameUser; ?> </h2>
               <h4>Número de TAGs: <?php echo $numTags ?></h4>
-              <table id="ordem" class="table table-striped table-bordered sortable">
+              <table id="ordem" class="table table-bordered sortable">
                 <tr> <th>TAG </th> <th>DATA </th> <th>HORÁRIO </th> </tr>
                 <?php
               for ($x=0; $x < $numTags; $x++) {
@@ -84,7 +84,7 @@ if(!$admin){ ?>
                 }
               }
             }else {
-              echo "<h3 class=\"alert alert-warning\">Usuário não encontrado.<h3>";
+              echo "<p class=\"text-warning\">Usuário não encontrado.<p>";
             }
           }
           }

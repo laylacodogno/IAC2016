@@ -139,7 +139,7 @@ if(!$admin){ ?>
       }else if (!empty($_GET['sucess'])) {
         $sucess = $_GET['sucess'];
         if ($sucess == 1) {
-          echo "<p class=\"text-warning\">Cadastro Efetuado.</p>";
+          echo "<p class=\"text-success\">Cadastro Efetuado.</p>";
         }
       }
     ?>
