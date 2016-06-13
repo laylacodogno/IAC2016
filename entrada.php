@@ -25,6 +25,7 @@
           $rows = mysqli_fetch_all(mysqli_query($conexao, $sqlT));
           $tagMaster_check = intval($rows[0][2]);
 
+
           if ($resultadoT == 1) {
             $sqlR = "SELECT * FROM restricoes WHERE tag_id = '$tag';";
             $resultadoR = mysqli_query($conexao, $sqlR);
