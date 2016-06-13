@@ -22,6 +22,8 @@
 
           $sqlT = "SELECT * FROM tags WHERE id = '$tag';";
           $resultadoT = mysqli_num_rows(mysqli_query($conexao, $sqlT));
+          $rows = mysqli_fetch_all(mysqli_query($conexao, $sqlT));
+          $tagMaster_check = intval($rows[0][2]);
 
 
           if ($resultadoT == 1) {
@@ -36,35 +38,37 @@
             $hora_atual = date('H:i:s');
 
             // var_dump($dia_atual); var_dump($hora_atual); die();
-
-            foreach ($rows as $row) {
-              foreach ($row as $key => $value) {
-                if ($key == 4) {
-                  if ($value == $dia_atual) {
-                    $dia_check = true;
-                  }else{
-                    $dia_check = false;
-                    header('location:entrada.php?error=4');
-                  }
-                }elseif ($key == 3) {
-                  if ($value >= $hora_atual) {
-                    $horaS_check = true;
-                  }else{
-                    $horaS_check = false;
-                    header('location:entrada.php?error=4');
-                  }
-                }elseif ($key == 2) {
-                  if ($value <= $hora_atual) {
-                    $horaE_check = true;
-                  }else{
-                    $horaE_check = false;
-                    header('location:entrada.php?error=4');
+            if ($tagMaster_check != 1) {
+              foreach ($rows as $row) {
+                foreach ($row as $key => $value) {
+                  if ($key == 4) {
+                    if ($value == $dia_atual) {
+                      $dia_check = true;
+                    }else{
+                      $dia_check = false;
+                      header('location:entrada.php?error=4');
+                    }
+                  }elseif ($key == 3) {
+                    if ($value >= $hora_atual) {
+                      $horaS_check = true;
+                    }else{
+                      $horaS_check = false;
+                      header('location:entrada.php?error=4');
+                    }
+                  }elseif ($key == 2) {
+                    if ($value <= $hora_atual) {
+                      $horaE_check = true;
+                    }else{
+                      $horaE_check = false;
+                      header('location:entrada.php?error=4');
+                    }
                   }
                 }
               }
             }
 
-            if ($dia_check && $horaE_check && $horaS_check) {
+
+            if (($dia_check && $horaE_check && $horaS_check) || $tagMaster_check == 1) {
               $sql = "INSERT INTO entradas (data, tag_id)
               VALUES (CURRENT_TIMESTAMP,'$tag');";
               $resultado = mysqli_query($conexao, $sql);
